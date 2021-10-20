@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc'
+import { toast } from 'react-toastify'
 import { useAuth } from '../../contexts/AuthContext'
 import { api } from '../../services/api'
 import styles from './styles.module.scss'
@@ -13,14 +14,23 @@ export function SendMessageForm() {
 
     if (!message.trim()) return
 
-    await api.post('messages', { message })
-
-    setMessage('')
+    try {
+      await api.post('messages', { message })
+      toast.success('Mensagem enviada!')
+      setMessage('')
+    } catch (error) {
+      console.error(error)
+      toast.error('Algo deu errado')
+    }
   }
 
   return (
     <div className={styles.wrapper}>
-      <button className={styles.signOutButton} onClick={signOut}>
+      <button
+        className={styles.signOutButton}
+        onClick={signOut}
+        title='Sign Out'
+      >
         <VscSignOut size='32' />
       </button>
 

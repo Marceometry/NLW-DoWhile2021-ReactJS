@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { AuthContextData, AuthProviderProps, AuthResponse, User } from './types'
 import { api } from '../services/api'
+import { toast } from 'react-toastify'
 
 export const AuthContext = createContext({} as AuthContextData)
 
@@ -49,14 +50,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       setUser(user)
       setIsLoading(false)
+      toast.success(`Bem vindo, ${user.name}!`)
     } catch (error: any) {
       console.error(error.message)
+      toast.error('Algo deu errado')
       setIsLoading(false)
     }
   }
 
   function signOut() {
     setUser(null)
+    toast('Até a próxima!')
     localStorage.removeItem('@dowhile:token')
   }
 

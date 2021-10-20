@@ -1,6 +1,7 @@
 import { LoginBox, MessageList, SendMessageForm } from './components'
 import { useAuth } from './contexts/AuthContext'
 import styles from './styles/App.module.scss'
+import 'react-toastify/dist/ReactToastify.css'
 
 export function App() {
   const { user } = useAuth()

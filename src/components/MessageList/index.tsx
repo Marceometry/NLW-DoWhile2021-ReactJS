@@ -40,7 +40,6 @@ export function MessageList() {
 
       {messages.length > 0 ? (
         <ul className={styles.messageList}>
-          {console.log(messages)}
           {messages.map((message) => (
             <li key={message.id} className={styles.message}>
               <p className={styles.content}>{message.text}</p>
