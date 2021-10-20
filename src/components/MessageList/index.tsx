@@ -1,62 +1,37 @@
-import styles from './styles.module.scss'
+import { useEffect, useState } from 'react'
+import { api } from '../../services/api'
+import { Message } from './types'
+
 import logo from '../../assets/logo.svg'
+import styles from './styles.module.scss'
 
 export function MessageList() {
+  const [messages, setMessages] = useState<Message[]>([])
+
+  useEffect(() => {
+    api.get<Message[]>('messages/last3').then(({ data }) => {
+      setMessages(data)
+    })
+  }, [])
+
   return (
     <div className={styles.wrapper}>
       <img src={logo} alt='Logo' />
 
       <ul className={styles.messageList}>
-        <li className={styles.message}>
-          <p className={styles.content}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            quasi veniam maiores ipsam accusamus. Est, vero harum provident sed
-            illo sapiente dolorum debitis quidem iusto molestiae molestias quae.
-            Magnam, illo.
-          </p>
+        {messages.map((message) => (
+          <li className={styles.message} key={message.id}>
+            <p className={styles.content}>{message.text}</p>
 
-          <div className={styles.user}>
-            <div className={styles.avatar}>
-              <img src="https://github.com/Marceometry.png" alt="Avatar" />
+            <div className={styles.user}>
+              <div className={styles.avatar}>
+                <img src={message.user.avatar_url} alt={message.user.name} />
+              </div>
+
+              <span className={styles.username}>{message.user.name}</span>
             </div>
-
-            <span className={styles.username}>Marceometry</span>
-          </div>
-        </li>
-
-        <li className={styles.message}>
-          <p className={styles.content}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            quasi veniam maiores ipsam accusamus. Est, vero harum provident sed
-            illo sapiente dolorum debitis quidem iusto molestiae molestias quae.
-            Magnam, illo.
-          </p>
-
-          <div className={styles.user}>
-            <div className={styles.avatar}>
-              <img src="https://github.com/Marceometry.png" alt="Avatar" />
-            </div>
-
-            <span className={styles.username}>Marceometry</span>
-          </div>
-        </li>
-
-        <li className={styles.message}>
-          <p className={styles.content}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            quasi veniam maiores ipsam accusamus. Est, vero harum provident sed
-            illo sapiente dolorum debitis quidem iusto molestiae molestias quae.
-            Magnam, illo.
-          </p>
-
-          <div className={styles.user}>
-            <div className={styles.avatar}>
-              <img src="https://github.com/Marceometry.png" alt="Avatar" />
-            </div>
-
-            <span className={styles.username}>Marceometry</span>
-          </div>
-        </li>
+          </li>
+        ))}
       </ul>
     </div>
   )
