@@ -8,7 +8,10 @@ export const AuthContext = createContext({} as AuthContextData)
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=b84b086b38d636a53970`
+
+  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${
+    import.meta.env.VITE_GITHUB_CLIENT_ID
+  }`
 
   useEffect(() => {
     const url = window.location.href
