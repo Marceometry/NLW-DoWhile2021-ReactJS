@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
-import io from 'socket.io-client'
 import { api } from '../../services/api'
+import { messagesQueue } from '../../services/socket'
 import { Message } from './types'
 
 import logo from '../../assets/logo.svg'
 import styles from './styles.module.scss'
-
-const messagesQueue: Message[] = []
-const socket = io('http://localhost:4000')
-socket.on('new_message', (message: Message) => messagesQueue.push(message))
 
 export function MessageList() {
   const [messages, setMessages] = useState<Message[]>([])
