@@ -1,5 +1,11 @@
+import styles from './App.module.scss'
+import { LoginBox, MessageList } from './components'
+
 export function App() {
   return (
-    <h1>DoWhile 2021</h1>
+    <main className={styles.wrapper}>
+      <MessageList />
+      <LoginBox />
+    </main>
   )
 }
