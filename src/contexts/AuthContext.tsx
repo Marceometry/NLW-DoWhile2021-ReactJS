@@ -25,6 +25,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const token = localStorage.getItem('@dowhile:token')
 
     if (token) {
+      api.defaults.headers.common.authorization = `Bearer ${token}`
+
       api.get<User>('profile').then(({ data }) => {
         setUser(data)
       })
