@@ -5,6 +5,10 @@
   font-family: Roboto, sans-serif;
 }
 
+*:focus {
+  outline: 1px solid #ffcd1e;
+}
+
 body {
   color: #e1e1e6;
   background-color: #121214;

@@ -1,0 +1,131 @@
+.wrapper {
+  padding: 24px;
+  background-color: #1b1b1f;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+.signOutButton {
+  border: 0;
+  color: #c4c4cc;
+  background: transparent;
+
+  position: absolute;
+  left: 24px;
+  top: 24px;
+
+  cursor: pointer;
+  transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .userAvatar {
+    padding: 3px;
+    border-radius: 999px;
+    line-height: 0;
+    background: linear-gradient(100deg, #ff008e 0%, #ffcd1e 100%);
+
+    img {
+      width: 94px;
+      height: 94px;
+      border-radius: 50%;
+      border: 6px solid #121214;
+    }
+  }
+
+  .userName {
+    font-size: 24px;
+    line-height: 30px;
+    margin-top: 16px;
+  }
+
+  .userGithub {
+    margin-top: 8px;
+    color: #c4c4cc;
+
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+}
+
+.sendMessageForm {
+  margin-top: 48px;
+  background-color: #202024;
+
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    padding: 18px 24px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #29292e;
+  }
+
+  textarea {
+    height: 160px;
+    padding: 24px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #e1e1e6;
+    background: transparent;
+    border: 0;
+    resize: none;
+
+    &::placeholder {
+      color: #8d8d99;
+    }
+  }
+
+  button {
+    height: 40px;
+    padding: 10px 32px;
+    margin: 24px;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+
+    color: #ffffff;
+    background-color: #ff008e;
+    border: 0;
+    transition-property: filter, opacity;
+    transition-duration: 0.3s;
+    cursor: pointer;
+
+    &:not(:disabled):hover {
+      filter: brightness(0.9);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
