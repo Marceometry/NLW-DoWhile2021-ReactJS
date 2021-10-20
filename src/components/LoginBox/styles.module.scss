@@ -25,7 +25,6 @@
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
-    text-decoration: none;
 
     display: flex;
     align-items: center;
@@ -33,11 +32,16 @@
 
     color: #09090a;
     background-color: #ffcd1e;
+    border: 0;
     transition: filter 0.3s;
     cursor: pointer;
 
     &:hover {
       filter: brightness(0.8);
+    }
+
+    &:focus {
+      outline: 1px solid #ff008e;
     }
 
     svg {

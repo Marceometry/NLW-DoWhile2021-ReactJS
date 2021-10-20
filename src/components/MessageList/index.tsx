@@ -38,21 +38,35 @@ export function MessageList() {
     <div className={styles.wrapper}>
       <img src={logo} alt='Logo' />
 
-      <ul className={styles.messageList}>
-        {messages.map((message) => (
-          <li className={styles.message} key={message.text + message.user.name}>
-            <p className={styles.content}>{message.text}</p>
+      {messages.length > 0 ? (
+        <ul className={styles.messageList}>
+          {console.log(messages)}
+          {messages.map((message) => (
+            <li key={message.id} className={styles.message}>
+              <p className={styles.content}>{message.text}</p>
 
-            <div className={styles.user}>
-              <div className={styles.avatar}>
-                <img src={message.user.avatar_url} alt={message.user.name} />
+              <div className={styles.user}>
+                <div className={styles.avatar}>
+                  <img src={message.user.avatar_url} alt={message.user.name} />
+                </div>
+
+                <a
+                  rel='noffolow'
+                  target='_blank'
+                  className={styles.username}
+                  href={`https://github.com/${message.user.login}`}
+                >
+                  {message.user.name}
+                </a>
               </div>
-
-              <span className={styles.username}>{message.user.name}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className={styles.emptyList}>
+          <h1>Não há mensagens</h1>
+        </div>
+      )}
     </div>
   )
 }

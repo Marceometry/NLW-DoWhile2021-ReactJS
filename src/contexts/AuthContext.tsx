@@ -6,6 +6,7 @@ export const AuthContext = createContext({} as AuthContextData)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=b84b086b38d636a53970`
 
   useEffect(() => {
@@ -13,6 +14,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const hasGithubCode = url.includes('?code=')
 
     if (hasGithubCode) {
+      setIsLoading(true)
       const [urlWithoutCode, githubCode] = url.split('?code=')
 
       window.history.pushState({}, '', urlWithoutCode)
@@ -34,17 +36,23 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, [])
 
   async function signIn(githubCode: string) {
-    const { data } = await api.post<AuthResponse>('authenticate', {
-      code: githubCode,
-    })
+    try {
+      const { data } = await api.post<AuthResponse>('authenticate', {
+        code: githubCode,
+      })
 
-    const { token, user } = data
+      const { token, user } = data
 
-    api.defaults.headers.common.authorization = `Bearer ${token}`
+      api.defaults.headers.common.authorization = `Bearer ${token}`
 
-    localStorage.setItem('@dowhile:token', token)
+      localStorage.setItem('@dowhile:token', token)
 
-    setUser(user)
+      setUser(user)
+      setIsLoading(false)
+    } catch (error: any) {
+      console.error(error.message)
+      setIsLoading(false)
+    }
   }
 
   function signOut() {
@@ -53,7 +61,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, signInUrl, signOut }}>
+    <AuthContext.Provider
+      value={{ user, isLoading, setIsLoading, signInUrl, signOut }}
+    >
       {children}
     </AuthContext.Provider>
   )

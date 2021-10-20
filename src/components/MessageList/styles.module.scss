@@ -10,6 +10,14 @@
   }
 }
 
+.emptyList {
+  width: 326px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .messageList {
   list-style: none;
   flex: 1;
@@ -52,6 +60,12 @@
       .username {
         font-size: 16px;
         margin-left: 12px;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

@@ -3,6 +3,7 @@ export type Message = {
   text: string
   user: {
     name: string
+    login: string
     avatar_url: string
   }
 }

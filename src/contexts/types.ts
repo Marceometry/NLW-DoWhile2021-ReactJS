@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 
 export type AuthContextData = {
   user: User | null
+  isLoading: boolean
+  setIsLoading: (isLoading: boolean) => void
   signInUrl: string
   signOut: () => void
 }
