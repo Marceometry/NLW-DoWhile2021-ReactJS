@@ -46,4 +46,6 @@ Frontend web do projeto DoWhile, feito durante a `NLW Heat` em ReactJS.
 
 Agora você pode acessar [`localhost:3000`](http://localhost:3000) do seu navegador.
 
+---
+
 <h4 align="center"> Feito com ♥ por Marcelino Teixeira </h4>
