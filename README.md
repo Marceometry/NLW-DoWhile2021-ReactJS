@@ -11,7 +11,11 @@
 <br>
 
 <p align="center">
-  <img alt="Project Mockup" src=".github/mockup.png" width="100%">
+  <img alt="Project Mockup" src=".github/mockup1.png" width="100%">
+</p>
+
+<p align="center">
+  <img alt="Project Mockup" src=".github/mockup2.png" width="100%">
 </p>
 
 ## 🧪 Tecnologias
