@@ -29,7 +29,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-<h4> Acesse em: https://nlw-do-while2021-react-js.vercel.app/ </h4>
+<h4> Acesse em: https://nlw7-dowhile2021-react-js.vercel.app/ </h4>
 
 Frontend web do projeto DoWhile, feito durante a `NLW Heat` em ReactJS.
 
